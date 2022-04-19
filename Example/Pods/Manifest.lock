@@ -1,0 +1,25 @@
+PODS:
+  - JXSegmentedViewExt/Core (1.0.0)
+  - JXSegmentedViewExt/SubTitle (1.0.0):
+    - JXSegmentedViewExt/Title
+  - JXSegmentedViewExt/SubTitleImage (1.0.0):
+    - JXSegmentedViewExt/SubTitle
+  - JXSegmentedViewExt/Title (1.0.0):
+    - JXSegmentedViewExt/Core
+  - JXSegmentedViewExt/TitleImage (1.0.0):
+    - JXSegmentedViewExt/Title
+
+DEPENDENCIES:
+  - JXSegmentedViewExt/SubTitleImage (from `../../JXSegmentedViewExt`)
+  - JXSegmentedViewExt/TitleImage (from `../../JXSegmentedViewExt`)
+
+EXTERNAL SOURCES:
+  JXSegmentedViewExt:
+    :path: "../../JXSegmentedViewExt"
+
+SPEC CHECKSUMS:
+  JXSegmentedViewExt: 33c2ea24a055eba8cdb102caa2cd2ebc699b8c11
+
+PODFILE CHECKSUM: b3995e2d15a2c21b28849600d7d2b95083e8811b
+
+COCOAPODS: 1.11.3

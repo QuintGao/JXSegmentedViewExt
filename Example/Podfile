@@ -1,0 +1,9 @@
+use_frameworks!
+
+platform :ios, '9.0'
+
+target 'Example' do
+  pod 'JXSegmentedViewExt/SubTitleImage', :path => '../../JXSegmentedViewExt'
+  pod 'JXSegmentedViewExt/TitleImage', :path => '../../JXSegmentedViewExt'
+
+end

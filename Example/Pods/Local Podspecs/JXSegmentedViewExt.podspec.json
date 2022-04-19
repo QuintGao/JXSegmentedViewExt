@@ -1,0 +1,65 @@
+{
+  "name": "JXSegmentedViewExt",
+  "version": "1.0.0",
+  "summary": "JXSegmentedViewExt extensions and optimize",
+  "description": "对JXSegmentedView的优化扩展，拆分pod",
+  "homepage": "https://github.com/QuintGao/JXSegmentedViewExt",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "1094887059@qq.com": "1094887059@qq.com"
+  },
+  "source": {
+    "git": "https://github.com/QuintGao/JXSegmentedViewExt.git",
+    "tag": "1.0.0"
+  },
+  "requires_arc": true,
+  "platforms": {
+    "ios": "9.0"
+  },
+  "default_subspecs": "Core",
+  "subspecs": [
+    {
+      "name": "Core",
+      "source_files": "JXSegmentedView/Core/**/*.{swift}"
+    },
+    {
+      "name": "Title",
+      "source_files": "JXSegmentedView/Title",
+      "dependencies": {
+        "JXSegmentedViewExt/Core": [
+
+        ]
+      }
+    },
+    {
+      "name": "SubTitle",
+      "source_files": "JXSegmentedView/SubTitle",
+      "dependencies": {
+        "JXSegmentedViewExt/Title": [
+
+        ]
+      }
+    },
+    {
+      "name": "SubTitleImage",
+      "source_files": "JXSegmentedView/SubTitleImage",
+      "dependencies": {
+        "JXSegmentedViewExt/SubTitle": [
+
+        ]
+      }
+    },
+    {
+      "name": "TitleImage",
+      "source_files": "JXSegmentedView/TitleImage",
+      "dependencies": {
+        "JXSegmentedViewExt/Title": [
+
+        ]
+      }
+    }
+  ]
+}
