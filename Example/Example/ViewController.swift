@@ -10,28 +10,8 @@ import JXSegmentedViewExt
 
 class ViewController: UIViewController {
 
-//    var dataSource = JXSegmentedTitleDataSource()
-    var dataSource = JXSegmentedSubTitleImageDataSource()
-    
-    
-    lazy var segmentedView: JXSegmentedView = {
-        let segmentedView = JXSegmentedView()
-        segmentedView.dataSource = dataSource
-        segmentedView.delegate = self
-        
-        segmentedView.listContainer = self.containerView
-        
-        return segmentedView
-    }()
-    
-    lazy var containerView: JXSegmentedListContainerView = {
-        let containerView = JXSegmentedListContainerView(dataSource: self, type: .collectionView)
-        return containerView
-    }()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    lazy var subTitleImageDataSource: JXSegmentedSubTitleImageDataSource = {
+        let dataSource = JXSegmentedSubTitleImageDataSource()
         dataSource.titles = ["热点", "种草", "本地", "放映厅", "直播"];
         dataSource.subTitles = ["热度咨询", "潮流好物", "同城关注", "宅家必看", "大V在线"]
         dataSource.titleNormalFont = UIFont.systemFont(ofSize: 15)
@@ -44,8 +24,8 @@ class ViewController: UIViewController {
         dataSource.subTitleNormalColor = .gray
         dataSource.subTitleSelectedColor = .white
         dataSource.subTitleWithTitlePositionMargin = 3
-        dataSource.itemSpacing = 1
-//        dataSource.itemWidthIncrement = 16
+        dataSource.itemSpacing = 0
+        dataSource.itemWidthIncrement = 16
         dataSource.imageSize = CGSize(width: 12, height: 12)
         dataSource.imageTypes = [.none, .left, .none, .left, .left]
         dataSource.normalImageInfos = ["", "zhongcao", "", "fangying", "gif"]
@@ -76,10 +56,72 @@ class ViewController: UIViewController {
             }
         }
         dataSource.isIgnoreImageWidth = true
+        return dataSource
+    }()
+    
+    lazy var dotZoomDataSource: JXSegmentedDotZoomDataSource = {
+       let dataSource = JXSegmentedDotZoomDataSource()
+        dataSource.titles = ["关注", "推荐", "电影", "直播", "小说"]
+//        dataSource.isTitleZoomEnabled = true
+//        dataSource.titleSelectedZoomScale = 1.5
+        dataSource.dotStyle = .hollow
+        return dataSource
+    }()
+    
+    
+    lazy var segmentedView: JXSegmentedView = {
+        let segmentedView = JXSegmentedView()
+        segmentedView.dataSource = dotZoomDataSource
+        segmentedView.delegate = self
+        
+        return segmentedView
+    }()
+    
+    lazy var indicator: JXSegmentedIndicatorAlignmentLineView = {
+        let lineView = JXSegmentedIndicatorAlignmentLineView()
+        lineView.alignmentStyle = .trailing
+        lineView.indicatorWidth = 20
+        return lineView
+    }()
+    
+    lazy var containerView: JXSegmentedListContainerView = {
+        let containerView = JXSegmentedListContainerView(dataSource: self, type: .collectionView)
+        return containerView
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        navigationItem.title = "JXSegmentedView测试"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "切换", style: .plain, target: self, action: #selector(changeStyle))
+        
+        let background = JXSegmentedIndicatorBackgroundView()
+        background.indicatorPosition = .top
+        
+        let lineView = JXSegmentedIndicatorLineView()
+        lineView.indicatorHeight = 16
+        lineView.verticalOffset = 10
+        lineView.indicatorWidthIncrement = 10
+//        lineView.lineScrollOffsetX = dataSource.titleImageSpacing + dataSource.imageSize.width
+        lineView.indicatorColor = UIColor(red: 243.0/255.0, green: 136.0/255.0, blue: 68.0/255.0, alpha: 1.0)
+        lineView.lineStyle = .lengthen
+//        segmentedView.indicators = [background, indicator]
+//        let indicator = JXSegmentedIndicatorAlignmentLineView()
+//        indicator.alignmentStyle = .trailing
+//        indicator.indicatorWidth = 20
+//        indicator.indicatorColors = [.red, .blue, .gray, .green, .brown]
+//        indicator.image = UIImage(named: "fangying")
+//        indicator.colors = [.blue, .red, .green]
+        segmentedView.indicators = [indicator, lineView]
+        
+        segmentedView.listContainer = self.containerView
+        
+        segmentedView.isSelectItemOnScrollHalf = true
+        
         view.addSubview(segmentedView)
         view.addSubview(containerView)
-        segmentedView.frame = CGRect(x: 0, y: 80, width: self.view.frame.width, height: 80)
-        containerView.frame = CGRect(x: 0, y: 160, width: self.view.frame.size.width, height: self.view.frame.size.height - 160)
+        segmentedView.frame = CGRect(x: 0, y: 80, width: self.view.frame.width, height: 54)
+        containerView.frame = CGRect(x: 0, y: 134, width: self.view.frame.size.width, height: self.view.frame.size.height - 160)
         
         segmentedView.reloadData()
     }
@@ -97,6 +139,14 @@ class ViewController: UIViewController {
         UIGraphicsEndImageContext()
         return tintedImage ?? UIImage()
     }
+    
+    @objc func changeStyle() {
+        dotZoomDataSource.titleNormalColor = .red
+        dotZoomDataSource.titleSelectedColor = .blue
+//        segmentedView.gk_refreshCellState()
+        indicator.indicatorColor = .blue
+        segmentedView.gk_refreshCellAndIndicatorState()
+    }
 }
 
 extension ViewController: JXSegmentedViewDelegate {
@@ -105,7 +155,7 @@ extension ViewController: JXSegmentedViewDelegate {
 
 extension ViewController: JXSegmentedListContainerViewDataSource {
     func numberOfLists(in listContainerView: JXSegmentedListContainerView) -> Int {
-        return dataSource.titles.count
+        return dotZoomDataSource.titles.count
     }
     
     func listContainerView(_ listContainerView: JXSegmentedListContainerView, initListAt index: Int) -> JXSegmentedListContainerViewListDelegate {

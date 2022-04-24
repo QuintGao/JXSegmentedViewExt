@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
                        DESC
   s.homepage         = 'https://github.com/QuintGao/JXSegmentedViewExt'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { '1094887059@qq.com' => '1094887059@qq.com' }
+  s.author           = { 'QuintGao' => '1094887059@qq.com' }
   s.source           = { :git => 'https://github.com/QuintGao/JXSegmentedViewExt.git', :tag => "#{s.version}" }
   s.requires_arc     = true
   s.ios.deployment_target = '9.0'
@@ -38,4 +38,93 @@ Pod::Spec.new do |s|
     ss.source_files = 'JXSegmentedView/TitleImage'
     ss.dependency 'JXSegmentedViewExt/Title'
   end
+  
+  s.subspec 'TitleOrImage' do |ss|
+    ss.source_files = 'JXSegmentedView/TitleOrImage'
+    ss.dependency 'JXSegmentedViewExt/Title'
+  end
+  
+  s.subspec 'TitleGradient' do |ss|
+    ss.source_files = 'JXSegmentedView/TitleGradient'
+    ss.dependency 'JXSegmentedViewExt/Title'
+  end
+  
+  s.subspec 'AttributeTitle' do |ss|
+    ss.source_files = 'JXSegmentedView/AttributeTitle'
+    ss.dependency 'JXSegmentedViewExt/Core'
+  end
+  
+  s.subspec 'Dot' do |ss|
+    ss.source_files = 'JXSegmentedView/Dot'
+    ss.dependency 'JXSegmentedViewExt/Title'
+  end
+  
+  s.subspec 'DotZoom' do |ss|
+    ss.source_files = 'JXSegmentedView/DotZoom'
+    ss.dependency 'JXSegmentedViewExt/Title'
+  end
+  
+  s.subspec 'Number' do |ss|
+    ss.source_files = 'JXSegmentedView/Number'
+    ss.dependency 'JXSegmentedViewExt/Title'
+  end
+  
+  s.subspec 'Badge' do |ss|
+    ss.source_files = 'JXSegmentedView/Badge'
+    ss.dependency 'JXSegmentedViewExt/Title'
+  end
+  
+  # ----------指示器-----------------------------#
+  s.subspec 'Indicator' do |ss|
+    ss.subspec 'Background' do |sss|
+      sss.source_files = 'JXSegmentedView/Indicator/Background'
+      sss.dependency 'JXSegmentedViewExt/Core'
+    end
+    
+    ss.subspec 'Line' do |sss|
+      sss.source_files = 'JXSegmentedView/Indicator/Line'
+      sss.dependency 'JXSegmentedViewExt/Core'
+    end
+    
+    ss.subspec 'AlignmentLine' do |sss|
+      sss.source_files = 'JXSegmentedView/Indicator/AlignmentLine'
+      sss.dependency 'JXSegmentedViewExt/Indicator/Line'
+    end
+    
+    ss.subspec 'Gradient' do |sss|
+      sss.source_files = 'JXSegmentedView/Indicator/Gradient'
+      sss.dependency 'JXSegmentedViewExt/Core'
+    end
+    
+    ss.subspec 'GradientLine' do |sss|
+      sss.source_files = 'JXSegmentedView/Indicator/GradientLine'
+      sss.dependency 'JXSegmentedViewExt/Indicator/Line'
+    end
+    
+    ss.subspec 'DotLine' do |sss|
+      sss.source_files = 'JXSegmentedView/Indicator/DotLine'
+      sss.dependency 'JXSegmentedViewExt/Core'
+    end
+    
+    ss.subspec 'DoubleLine' do |sss|
+      sss.source_files = 'JXSegmentedView/Indicator/DoubleLine'
+      sss.dependency 'JXSegmentedViewExt/Core'
+    end
+    
+    ss.subspec 'RainbowLine' do |sss|
+      sss.source_files = 'JXSegmentedView/Indicator/RainbowLine'
+      sss.dependency 'JXSegmentedViewExt/Indicator/Line'
+    end
+    
+    ss.subspec 'Triangle' do |sss|
+      sss.source_files = 'JXSegmentedView/Indicator/Triangle'
+      sss.dependency 'JXSegmentedViewExt/Core'
+    end
+    
+    ss.subspec 'Image' do |sss|
+      sss.source_files = 'JXSegmentedView/Indicator/Image'
+      sss.dependency 'JXSegmentedViewExt/Core'
+    end
+  end
+  
 end

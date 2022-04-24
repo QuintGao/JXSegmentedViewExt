@@ -248,8 +248,13 @@ open class JXSegmentedListContainerView: UIView, JXSegmentedViewListContainer, J
         }else {
             collectionView.reloadData()
         }
-        listWillAppear(at: currentIndex)
-        listDidAppear(at: currentIndex)
+        // 2021.4.24 bug fix by QuintGao
+        // 修复某些情况下导致的Unbalanced calls to begin/end appearance transitions for XXXX
+        // 延时调用可使cell创建在列表控制器加载之前执行，从而避免控制器在cell创建之前加载
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0) { [self] in
+            listWillAppear(at: currentIndex)
+            listDidAppear(at: currentIndex)
+        }
     }
 
     //MARK: - Private

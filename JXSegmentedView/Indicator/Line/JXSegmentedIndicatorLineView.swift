@@ -33,7 +33,7 @@ open class JXSegmentedIndicatorLineView: JXSegmentedIndicatorBaseView {
 
         let width = getIndicatorWidth(itemFrame: model.currentSelectedItemFrame, itemContentWidth: model.currentItemContentWidth)
         let height = getIndicatorHeight(itemFrame: model.currentSelectedItemFrame)
-        let x = model.currentSelectedItemFrame.origin.x + (model.currentSelectedItemFrame.size.width - width)/2
+        let x = calculateOriginX(model.currentSelectedItemFrame, width: width)
         var y: CGFloat = 0
         switch indicatorPosition {
         case .top:
@@ -61,8 +61,8 @@ open class JXSegmentedIndicatorLineView: JXSegmentedIndicatorBaseView {
 
         let leftWidth = targetWidth
         let rightWidth = getIndicatorWidth(itemFrame: rightItemFrame, itemContentWidth: model.rightItemContentWidth)
-        let leftX = leftItemFrame.origin.x + (leftItemFrame.size.width - leftWidth)/2
-        let rightX = rightItemFrame.origin.x + (rightItemFrame.size.width - rightWidth)/2
+        let leftX = calculateOriginX(leftItemFrame, width: leftWidth)
+        let rightX = calculateOriginX(rightItemFrame, width: rightWidth)
 
         switch lineStyle {
         case .normal:
@@ -101,7 +101,7 @@ open class JXSegmentedIndicatorLineView: JXSegmentedIndicatorBaseView {
 
         let targetWidth = getIndicatorWidth(itemFrame: model.currentSelectedItemFrame, itemContentWidth: model.currentItemContentWidth)
         var toFrame = self.frame
-        toFrame.origin.x = model.currentSelectedItemFrame.origin.x + (model.currentSelectedItemFrame.size.width - targetWidth)/2
+        toFrame.origin.x = calculateOriginX(model.currentSelectedItemFrame, width: targetWidth)
         toFrame.size.width = targetWidth
         if canSelectedWithAnimation(model: model) {
             UIView.animate(withDuration: scrollAnimationDuration, delay: 0, options: .curveEaseOut, animations: {
@@ -112,5 +112,8 @@ open class JXSegmentedIndicatorLineView: JXSegmentedIndicatorBaseView {
             frame = toFrame
         }
     }
-
+    
+    open func calculateOriginX(_ frame: CGRect, width: CGFloat) -> CGFloat {
+        return frame.origin.x + (frame.size.width - width) / 2;
+    }
 }

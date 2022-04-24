@@ -196,6 +196,10 @@ open class JXSegmentedView: UIView, JXSegmentedViewRTLCompatible {
     open var contentEdgeInsetRight: CGFloat = JXSegmentedViewAutomaticDimension
     /// 点击切换的时候，contentScrollView的切换是否需要动画
     open var isContentScrollViewClickTransitionAnimationEnabled: Bool = true
+    
+    // 2022.4.24 添加属性，是否滚动到一半的时候选中下一个item
+    // author: QuintGao
+    open var isSelectItemOnScrollHalf: Bool = false
 
     private var itemDataSource = [JXSegmentedBaseItemModel]()
     private var innerItemSpacing: CGFloat = 0
@@ -408,7 +412,56 @@ open class JXSegmentedView: UIView, JXSegmentedViewRTLCompatible {
         let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? JXSegmentedBaseCell
         cell?.reloadData(itemModel: itemDataSource[index], selectedType: .unknown)
     }
+    
+    /// 刷新所有cell状态
+    open func gk_refreshCellState() {
+        for (idx, _) in itemDataSource.enumerated() {
+            reloadItem(at: idx)
+        }
+    }
+    
+    /// 刷新所有指示器状态
+    open func gk_refreshIndicatorState() {
+        var selectedItemFrameX = innerItemSpacing
+        var totalContentWidth = getContentEdgeInsetLeft()
+        for (index, itemModel) in itemDataSource.enumerated() {
+            if index < selectedIndex {
+                selectedItemFrameX += itemModel.itemWidth + innerItemSpacing
+            }
+            if index == itemDataSource.count - 1 {
+                totalContentWidth += itemModel.itemWidth + getContentEdgeInsetRight()
+            }else {
+                totalContentWidth += itemModel.itemWidth + innerItemSpacing
+            }
+        }
+        
+        for indicator in indicators {
+            if itemDataSource.isEmpty {
+                indicator.isHidden = true
+            }else {
+                indicator.isHidden = false
+                let selectedItemFrame = getItemFrameAt(index: selectedIndex)
+                let indicatorParams = JXSegmentedIndicatorSelectedParams(currentSelectedIndex: selectedIndex,
+                                                                         currentSelectedItemFrame: selectedItemFrame,
+                                                                         selectedType: .unknown,
+                                                                         currentItemContentWidth: dataSource?.segmentedView(self, widthForItemContentAt: selectedIndex) ?? 0,
+                                                                         collectionViewContentSize: CGSize(width: totalContentWidth, height: bounds.size.height))
+                indicator.refreshIndicatorState(model: indicatorParams)
 
+                if indicator.isIndicatorConvertToItemFrameEnabled {
+                    var indicatorConvertToItemFrame = indicator.frame
+                    indicatorConvertToItemFrame.origin.x -= selectedItemFrame.origin.x
+                    itemDataSource[selectedIndex].indicatorConvertToItemFrame = indicatorConvertToItemFrame
+                }
+            }
+        }
+    }
+    
+    /// 刷新所有cell和指示器状态
+    open func gk_refreshCellAndIndicatorState() {
+        gk_refreshCellState()
+        gk_refreshIndicatorState()
+    }
 
     /// 代码选中指定index
     /// 如果要同时触发列表容器对应index的列表加载，请再调用`listContainerView.didClickSelectedItem(at: index)`方法
@@ -466,6 +519,9 @@ open class JXSegmentedView: UIView, JXSegmentedViewRTLCompatible {
                     //滑动翻页，需要更新选中状态
                     //滑动一小段距离，然后放开回到原位，contentOffset同样的值会回调多次。例如在index为1的情况，滑动放开回到原位，contentOffset会多次回调CGPoint(width, 0)
                     if !(lastContentOffset.x == contentOffset.x && selectedIndex == baseIndex) {
+                        if isSelectItemOnScrollHalf && selectedIndex == baseIndex {
+                            return
+                        }
                         scrollSelectItemAt(index: baseIndex)
                     }
                 }else {
@@ -474,6 +530,9 @@ open class JXSegmentedView: UIView, JXSegmentedViewRTLCompatible {
                         var targetIndex = baseIndex
                         if progress < CGFloat(selectedIndex) {
                             targetIndex = baseIndex + 1
+                        }
+                        if isSelectItemOnScrollHalf && selectedIndex == targetIndex {
+                            return
                         }
                         scrollSelectItemAt(index: targetIndex)
                     }
@@ -505,6 +564,16 @@ open class JXSegmentedView: UIView, JXSegmentedViewRTLCompatible {
                     rightCell?.reloadData(itemModel: itemDataSource[baseIndex + 1], selectedType: .unknown)
 
                     delegate?.segmentedView(self, scrollingFrom: baseIndex, to: baseIndex + 1, percent: remainderProgress)
+                }
+                if isSelectItemOnScrollHalf {
+                    var index = baseIndex
+                    if remainderProgress > 0.5 {
+                        index = baseIndex + 1
+                    }
+                    if selectedIndex == index {
+                        return
+                    }
+                    selectItemAt(index: index, selectedType: .scroll)
                 }
             }
             lastContentOffset = contentOffset
@@ -581,20 +650,22 @@ open class JXSegmentedView: UIView, JXSegmentedViewRTLCompatible {
 
         selectedIndex = index
 
-        let currentSelectedItemFrame = getSelectedItemFrameAt(index: selectedIndex)
-        for indicator in indicators {
-            let indicatorParams = JXSegmentedIndicatorSelectedParams(currentSelectedIndex: selectedIndex,
-                                                                     currentSelectedItemFrame: currentSelectedItemFrame,
-                                                                     selectedType: selectedType,
-                                                                     currentItemContentWidth: dataSource?.segmentedView(self, widthForItemContentAt: selectedIndex) ?? 0,
-                                                                     collectionViewContentSize: nil)
-            indicator.selectItem(model: indicatorParams)
+        if !isSelectItemOnScrollHalf {
+            let currentSelectedItemFrame = getSelectedItemFrameAt(index: selectedIndex)
+            for indicator in indicators {
+                let indicatorParams = JXSegmentedIndicatorSelectedParams(currentSelectedIndex: selectedIndex,
+                                                                         currentSelectedItemFrame: currentSelectedItemFrame,
+                                                                         selectedType: selectedType,
+                                                                         currentItemContentWidth: dataSource?.segmentedView(self, widthForItemContentAt: selectedIndex) ?? 0,
+                                                                         collectionViewContentSize: nil)
+                indicator.selectItem(model: indicatorParams)
 
-            if indicator.isIndicatorConvertToItemFrameEnabled {
-                var indicatorConvertToItemFrame = indicator.frame
-                indicatorConvertToItemFrame.origin.x -= currentSelectedItemFrame.origin.x
-                itemDataSource[selectedIndex].indicatorConvertToItemFrame = indicatorConvertToItemFrame
-                willSelectedCell?.reloadData(itemModel: willSelectedItemModel, selectedType: selectedType)
+                if indicator.isIndicatorConvertToItemFrameEnabled {
+                    var indicatorConvertToItemFrame = indicator.frame
+                    indicatorConvertToItemFrame.origin.x -= currentSelectedItemFrame.origin.x
+                    itemDataSource[selectedIndex].indicatorConvertToItemFrame = indicatorConvertToItemFrame
+                    willSelectedCell?.reloadData(itemModel: willSelectedItemModel, selectedType: selectedType)
+                }
             }
         }
 
@@ -638,7 +709,7 @@ open class JXSegmentedView: UIView, JXSegmentedViewRTLCompatible {
             width = selectedItemModel.itemWidth
         }
         
-        let frame = CGRect(x: x, y: 0, width: width, height: bounds.size.width)
+        let frame = CGRect(x: x, y: 0, width: width, height: bounds.size.height)
         return dataSource?.getCellFrameAt(index: index, frame: frame) ?? frame
     }
 
@@ -659,7 +730,7 @@ open class JXSegmentedView: UIView, JXSegmentedViewRTLCompatible {
             width = selectedItemModel.itemWidth
         }
         
-        let frame = CGRect(x: x, y: 0, width: width, height: bounds.size.width)
+        let frame = CGRect(x: x, y: 0, width: width, height: bounds.size.height)
         return dataSource?.getSelectCellFrameAt(index: index, frame: frame) ?? frame
     }
 

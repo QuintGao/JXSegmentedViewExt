@@ -29,7 +29,6 @@ open class JXSegmentedSubTitleImageCell: JXSegmentedSubTitleCell {
         imageViewHeightConstraint = imageView.heightAnchor.constraint(equalToConstant: 0)
         imageViewHeightConstraint.isActive = true
         contentView.addSubview(imageView)
-        contentView.backgroundColor = .red
     }
     
     open override func layoutSubviews() {

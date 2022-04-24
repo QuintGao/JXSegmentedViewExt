@@ -1,25 +1,60 @@
 PODS:
+  - JXSegmentedViewExt/Badge (1.0.0):
+    - JXSegmentedViewExt/Title
   - JXSegmentedViewExt/Core (1.0.0)
+  - JXSegmentedViewExt/DotZoom (1.0.0):
+    - JXSegmentedViewExt/Title
+  - JXSegmentedViewExt/Indicator (1.0.0):
+    - JXSegmentedViewExt/Indicator/AlignmentLine (= 1.0.0)
+    - JXSegmentedViewExt/Indicator/Background (= 1.0.0)
+    - JXSegmentedViewExt/Indicator/DotLine (= 1.0.0)
+    - JXSegmentedViewExt/Indicator/DoubleLine (= 1.0.0)
+    - JXSegmentedViewExt/Indicator/Gradient (= 1.0.0)
+    - JXSegmentedViewExt/Indicator/GradientLine (= 1.0.0)
+    - JXSegmentedViewExt/Indicator/Image (= 1.0.0)
+    - JXSegmentedViewExt/Indicator/Line (= 1.0.0)
+    - JXSegmentedViewExt/Indicator/RainbowLine (= 1.0.0)
+    - JXSegmentedViewExt/Indicator/Triangle (= 1.0.0)
+  - JXSegmentedViewExt/Indicator/AlignmentLine (1.0.0):
+    - JXSegmentedViewExt/Indicator/Line
+  - JXSegmentedViewExt/Indicator/Background (1.0.0):
+    - JXSegmentedViewExt/Core
+  - JXSegmentedViewExt/Indicator/DotLine (1.0.0):
+    - JXSegmentedViewExt/Core
+  - JXSegmentedViewExt/Indicator/DoubleLine (1.0.0):
+    - JXSegmentedViewExt/Core
+  - JXSegmentedViewExt/Indicator/Gradient (1.0.0):
+    - JXSegmentedViewExt/Core
+  - JXSegmentedViewExt/Indicator/GradientLine (1.0.0):
+    - JXSegmentedViewExt/Indicator/Line
+  - JXSegmentedViewExt/Indicator/Image (1.0.0):
+    - JXSegmentedViewExt/Core
+  - JXSegmentedViewExt/Indicator/Line (1.0.0):
+    - JXSegmentedViewExt/Core
+  - JXSegmentedViewExt/Indicator/RainbowLine (1.0.0):
+    - JXSegmentedViewExt/Indicator/Line
+  - JXSegmentedViewExt/Indicator/Triangle (1.0.0):
+    - JXSegmentedViewExt/Core
   - JXSegmentedViewExt/SubTitle (1.0.0):
     - JXSegmentedViewExt/Title
   - JXSegmentedViewExt/SubTitleImage (1.0.0):
     - JXSegmentedViewExt/SubTitle
   - JXSegmentedViewExt/Title (1.0.0):
     - JXSegmentedViewExt/Core
-  - JXSegmentedViewExt/TitleImage (1.0.0):
-    - JXSegmentedViewExt/Title
 
 DEPENDENCIES:
+  - JXSegmentedViewExt/Badge (from `../../JXSegmentedViewExt`)
+  - JXSegmentedViewExt/DotZoom (from `../../JXSegmentedViewExt`)
+  - JXSegmentedViewExt/Indicator (from `../../JXSegmentedViewExt`)
   - JXSegmentedViewExt/SubTitleImage (from `../../JXSegmentedViewExt`)
-  - JXSegmentedViewExt/TitleImage (from `../../JXSegmentedViewExt`)
 
 EXTERNAL SOURCES:
   JXSegmentedViewExt:
     :path: "../../JXSegmentedViewExt"
 
 SPEC CHECKSUMS:
-  JXSegmentedViewExt: 33c2ea24a055eba8cdb102caa2cd2ebc699b8c11
+  JXSegmentedViewExt: 54e57182727bb386c927beec001345d4218af7dd
 
-PODFILE CHECKSUM: b3995e2d15a2c21b28849600d7d2b95083e8811b
+PODFILE CHECKSUM: 448df72d64f5fb3edf79e7a3a3c347f585136e7e
 
 COCOAPODS: 1.11.3

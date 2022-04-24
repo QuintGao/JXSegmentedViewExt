@@ -102,7 +102,7 @@ open class JXSegmentedSubTitleImageDataSource: JXSegmentedSubTitleDataSource {
                 if type != .none {
                     imageWidth = titleImageSpacing + imageSize.width
                 }
-                frame.size.width += imageWidth
+                frame.size.width -= imageWidth
                 if type == .left {
                     frame.origin.x += imageWidth
                 }
@@ -121,7 +121,7 @@ open class JXSegmentedSubTitleImageDataSource: JXSegmentedSubTitleDataSource {
                 if type != .none {
                     imageWidth = titleImageSpacing + imageSize.width
                 }
-                frame.size.width += imageWidth
+                frame.size.width -= imageWidth
                 if type == .left {
                     frame.origin.x += imageWidth
                 }
@@ -146,7 +146,7 @@ open class JXSegmentedSubTitleImageDataSource: JXSegmentedSubTitleDataSource {
     open override func refreshItemModel(_ segmentedView: JXSegmentedView, currentSelectedItemModel: JXSegmentedBaseItemModel, willSelectedItemModel: JXSegmentedBaseItemModel, selectedType: JXSegmentedViewItemSelectedType) {
         super.refreshItemModel(segmentedView, currentSelectedItemModel: currentSelectedItemModel, willSelectedItemModel: willSelectedItemModel, selectedType: selectedType)
         
-        guard let myCurrentSelectedItemModel = currentSelectedItemModel as? JXSegmentedTitleImageItemModel, let myWillSelectedItemModel = willSelectedItemModel as? JXSegmentedTitleImageItemModel else {
+        guard let myCurrentSelectedItemModel = currentSelectedItemModel as? JXSegmentedSubTitleImageItemModel, let myWillSelectedItemModel = willSelectedItemModel as? JXSegmentedSubTitleImageItemModel else {
             return
         }
 

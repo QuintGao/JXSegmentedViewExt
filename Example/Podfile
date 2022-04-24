@@ -3,7 +3,13 @@ use_frameworks!
 platform :ios, '9.0'
 
 target 'Example' do
-  pod 'JXSegmentedViewExt/SubTitleImage', :path => '../../JXSegmentedViewExt'
-  pod 'JXSegmentedViewExt/TitleImage', :path => '../../JXSegmentedViewExt'
+  pod 'JXSegmentedViewExt', :subspecs => ['SubTitleImage', 'DotZoom', 'Badge', 'Indicator'], :path => '../../JXSegmentedViewExt'
+  
+  
+  
+#  pod 'JXSegmentedViewExt/SubTitleImage', :path => '../../JXSegmentedViewExt'
+#  pod 'JXSegmentedViewExt/TitleImage', :path => '../../JXSegmentedViewExt'
+#  pod 'JXSegmentedViewExt/Indicator/Background', :path => '../../JXSegmentedViewExt'
+#  pod 'JXSegmentedViewExt/Indicator/Line', :path => '../../JXSegmentedViewExt'
 
 end
