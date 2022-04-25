@@ -13,8 +13,6 @@ public enum JXSegmentedSubTitleImageType {
     case right      // 图片在标题右边
 }
 
-public typealias LoadSubImageClosure = ((UIImageView, String) -> Void)
-
 open class JXSegmentedSubTitleImageDataSource: JXSegmentedSubTitleDataSource {
     
     /// 数量需要和item的数量保持一致。可以是ImageName或者图片网络地址
@@ -22,7 +20,7 @@ open class JXSegmentedSubTitleImageDataSource: JXSegmentedSubTitleDataSource {
     /// 数量需要和item的数量保持一致。可以是ImageName或者图片网络地址。如果不赋值，选中时就不会处理图片切换。
     open var selectedImageInfos: [String]?
     /// 内部默认通过UIImage(named:)加载图片。如果传递的是图片网络地址或者想自己处理图片加载逻辑，可以通过该闭包处理。
-    open var loadImageClosure: LoadSubImageClosure?
+    open var loadImageClosure: LoadImageClosure?
     open var imageSize: CGSize = CGSize(width: 20, height: 20)
     open var titleImageSpacing: CGFloat = 5
     open var isImageZoomEnabled = false

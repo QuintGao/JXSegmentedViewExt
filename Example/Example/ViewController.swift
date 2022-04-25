@@ -68,10 +68,35 @@ class ViewController: UIViewController {
         return dataSource
     }()
     
+    lazy var badgeDataSource: JXSegmentedBadgeDataSource = {
+        let dataSource = JXSegmentedBadgeDataSource()
+        dataSource.titles = ["关注", "推荐", "电影", "直播", "小说"];
+        dataSource.isTitleZoomEnabled = true
+        dataSource.badgeTypes = [.number, .text, .dot, .number, .text]
+        dataSource.badges = [true, 333, true, 40, 0]
+        dataSource.badgeStringFormatterClosure = { (type, badge) in
+            if type == .number && badge is Int {
+                if (badge as! Int) > 99 {
+                    return "99+"
+                }
+            }
+            return "\(badge)"
+        }
+        dataSource.updateBadgeStyleClosure = { (index, badgeLabel) in
+            if index == 1 {
+                badgeLabel.backgroundColor = .black;
+                badgeLabel.textColor = UIColor.brown;
+            }else if index == 2 {
+                badgeLabel.backgroundColor = UIColor.blue;
+            }
+        }
+        return dataSource
+    }()
+    
     
     lazy var segmentedView: JXSegmentedView = {
         let segmentedView = JXSegmentedView()
-        segmentedView.dataSource = dotZoomDataSource
+        segmentedView.dataSource = badgeDataSource
         segmentedView.delegate = self
         
         return segmentedView

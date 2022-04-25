@@ -11,7 +11,7 @@ open class JXSegmentedSubTitleImageItemModel: JXSegmentedSubTitleItemModel {
     open var imageType: JXSegmentedSubTitleImageType = .none
     open var imageInfo: String?
     open var selectedImageInfo: String?
-    open var loadImageClosure: LoadSubImageClosure?
+    open var loadImageClosure: LoadImageClosure?
     open var imageSize: CGSize = CGSize(width: 20, height: 20)
     open var titleImageSpacing: CGFloat = 5
     open var isImageZoomEnabled = false

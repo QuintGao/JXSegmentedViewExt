@@ -9,6 +9,8 @@
 import Foundation
 import  UIKit
 
+public typealias LoadImageClosure = ((UIImageView, String) -> Void)
+
 open class JXSegmentedBaseDataSource: JXSegmentedViewDataSource {
     /// 最终传递给JXSegmentedView的数据源数组
     open var dataSource = [JXSegmentedBaseItemModel]()

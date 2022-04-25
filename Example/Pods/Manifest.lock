@@ -35,26 +35,35 @@ PODS:
     - JXSegmentedViewExt/Indicator/Line
   - JXSegmentedViewExt/Indicator/Triangle (1.0.0):
     - JXSegmentedViewExt/Core
+  - JXSegmentedViewExt/Number (1.0.0):
+    - JXSegmentedViewExt/Title
   - JXSegmentedViewExt/SubTitle (1.0.0):
     - JXSegmentedViewExt/Title
   - JXSegmentedViewExt/SubTitleImage (1.0.0):
     - JXSegmentedViewExt/SubTitle
   - JXSegmentedViewExt/Title (1.0.0):
     - JXSegmentedViewExt/Core
+  - JXSegmentedViewExt/TitleImage (1.0.0):
+    - JXSegmentedViewExt/Title
+  - JXSegmentedViewExt/TitleOrImage (1.0.0):
+    - JXSegmentedViewExt/Title
 
 DEPENDENCIES:
   - JXSegmentedViewExt/Badge (from `../../JXSegmentedViewExt`)
   - JXSegmentedViewExt/DotZoom (from `../../JXSegmentedViewExt`)
   - JXSegmentedViewExt/Indicator (from `../../JXSegmentedViewExt`)
+  - JXSegmentedViewExt/Number (from `../../JXSegmentedViewExt`)
   - JXSegmentedViewExt/SubTitleImage (from `../../JXSegmentedViewExt`)
+  - JXSegmentedViewExt/TitleImage (from `../../JXSegmentedViewExt`)
+  - JXSegmentedViewExt/TitleOrImage (from `../../JXSegmentedViewExt`)
 
 EXTERNAL SOURCES:
   JXSegmentedViewExt:
     :path: "../../JXSegmentedViewExt"
 
 SPEC CHECKSUMS:
-  JXSegmentedViewExt: 54e57182727bb386c927beec001345d4218af7dd
+  JXSegmentedViewExt: d9c1fae6941adafb1d9b1005ccf34dc4b033e321
 
-PODFILE CHECKSUM: 448df72d64f5fb3edf79e7a3a3c347f585136e7e
+PODFILE CHECKSUM: 95dd59559df669eed2f97ff6b79e05b91afe8828
 
 COCOAPODS: 1.11.3

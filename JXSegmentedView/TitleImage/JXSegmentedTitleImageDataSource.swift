@@ -17,8 +17,6 @@ public enum JXSegmentedTitleImageType {
     case onlyTitle
 }
 
-public typealias LoadImageClosure = ((UIImageView, String) -> Void)
-
 open class JXSegmentedTitleImageDataSource: JXSegmentedTitleDataSource {
     open var titleImageType: JXSegmentedTitleImageType = .rightImage
     /// 数量需要和item的数量保持一致。可以是ImageName或者图片网络地址

@@ -2,7 +2,7 @@
   "name": "JXSegmentedViewExt",
   "version": "1.0.0",
   "summary": "JXSegmentedViewExt extensions and optimize",
-  "description": "对JXSegmentedView的优化扩展，拆分pod",
+  "description": "对JXSegmentedView的优化扩展，拆分pod，支持更多样式的分类和指示器",
   "homepage": "https://github.com/QuintGao/JXSegmentedViewExt",
   "license": {
     "type": "MIT",
@@ -19,6 +19,7 @@
   "platforms": {
     "ios": "9.0"
   },
+  "swift_versions": "5.0",
   "default_subspecs": "Core",
   "subspecs": [
     {
@@ -219,5 +220,6 @@
         }
       ]
     }
-  ]
+  ],
+  "swift_version": "5.0"
 }

@@ -1,17 +1,15 @@
 Pod::Spec.new do |s|
   s.name             = 'JXSegmentedViewExt'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'JXSegmentedViewExt extensions and optimize'
-  s.description      = <<-DESC
-对JXSegmentedView的优化扩展，拆分pod
-                       DESC
   s.homepage         = 'https://github.com/QuintGao/JXSegmentedViewExt'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'QuintGao' => '1094887059@qq.com' }
   s.source           = { :git => 'https://github.com/QuintGao/JXSegmentedViewExt.git', :tag => "#{s.version}" }
   s.requires_arc     = true
-  s.ios.deployment_target = '9.0'
-  s.default_subspec = 'Core'
+  s.platform         = :ios, "9.0"
+  s.swift_version    = "5.0"
+  s.default_subspec  = 'Core'
   
   # -----------基础组件--------------------------#
   s.subspec 'Core' do |ss|

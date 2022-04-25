@@ -7,7 +7,7 @@
 <a href=""><img src="https://img.shields.io/badge/support-ios%208%2B-orange.svg"></a>
 </p>
 
-该库是对[JXSegmentedView](https://github.com/pujiaxin33/JXSegmentedView)的扩展及优化，目前的JXSegmentedView版本是1.3.0，JXSegmentedViewExt版本是1.0.0
+该库是对[JXSegmentedView](https://github.com/pujiaxin33/JXSegmentedView)的扩展及优化，目前的JXSegmentedView版本是1.3.0，JXSegmentedViewExt版本是1.0.1
 
 ## 优化及bug修改
 
@@ -106,4 +106,4 @@ pod 'JXCategoryViewExt/Indicator/DoubleLine'
 
 ## 更新记录
 
-* 1.0.0 2022.04.24 优化及bug修改，将pod拆分为多个
+* 1.0.1 2022.04.25 优化及bug修改，将pod拆分为多个
