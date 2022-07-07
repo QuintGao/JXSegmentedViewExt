@@ -41,67 +41,67 @@ pod 'JXSegmentedViewExt' 或 pod 'JXSegmentedViewExt/Core'
 #### 分类
 ```
 // 文字
-pod 'JXCategoryViewExt/Title'
+pod 'JXSegmentedViewExt/Title'
 
 // 文字+副标题
-pod 'JXCategoryViewExt/SubTitle'
+pod 'JXSegmentedViewExt/SubTitle'
 
 // 图片
-pod 'JXCategoryViewExt/Image'
+pod 'JXSegmentedViewExt/Image'
 
 // 文字+图片
-pod 'JXCategoryViewExt/TitleImage'
+pod 'JXSegmentedViewExt/TitleImage'
 
 // 富文本
-pod 'JXCategoryViewExt/TitleAttribute'
+pod 'JXSegmentedViewExt/TitleAttribute'
 
 // title+小红点
-pod 'JXCategoryViewExt/Dot'
+pod 'JXSegmentedViewExt/Dot'
 
 // title+小红点缩放
-pod 'JXCategoryViewExt/DotZoom'
+pod 'JXSegmentedViewExt/DotZoom'
 
 // title+数字
-pod 'JXCategoryViewExt/Number'
+pod 'JXSegmentedViewExt/Number'
 
 // title+(文字、数字、红点混合)
-pod 'JXCategoryViewExt/Badge'
+pod 'JXSegmentedViewExt/Badge'
 
 // title垂直滚动缩放
-pod 'JXCategoryViewExt/VerticalZoomTitle'
+pod 'JXSegmentedViewExt/VerticalZoomTitle'
 ```
 
 #### 指示器
 ```
 // 背景
-pod 'JXCategoryViewExt/Background'
+pod 'JXSegmentedViewExt/Background'
 
 // 线
-pod 'JXCategoryViewExt/Indicator/Line'
+pod 'JXSegmentedViewExt/Indicator/Line'
 
 // 线+对齐
-pod 'JXCategoryViewExt/Indicator/AlignmentLine'
+pod 'JXSegmentedViewExt/Indicator/AlignmentLine'
 
 // 线+彩虹效果
-pod 'JXCategoryViewExt/Indicator/RainbowLine'
+pod 'JXSegmentedViewExt/Indicator/RainbowLine'
 
 // 图片
-pod 'JXCategoryViewExt/Indicator/Image'
+pod 'JXSegmentedViewExt/Indicator/Image'
 
 // 背景渐变
-pod 'JXCategoryViewExt/Indicator/Gradient'
+pod 'JXSegmentedViewExt/Indicator/Gradient'
 
 // 线渐变
-pod 'JXCategoryViewExt/Indicator/GradientLine'
+pod 'JXSegmentedViewExt/Indicator/GradientLine'
 
 // 三角形
-pod 'JXCategoryViewExt/Indicator/Triangle'
+pod 'JXSegmentedViewExt/Indicator/Triangle'
 
 // 点线
-pod 'JXCategoryViewExt/Indicator/DotLine'
+pod 'JXSegmentedViewExt/Indicator/DotLine'
 
 // 双线
-pod 'JXCategoryViewExt/Indicator/DoubleLine'
+pod 'JXSegmentedViewExt/Indicator/DoubleLine'
 ```
 
 ## 更新记录
