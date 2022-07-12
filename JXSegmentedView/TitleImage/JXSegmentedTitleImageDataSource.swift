@@ -18,7 +18,7 @@ public enum JXSegmentedTitleImageType {
 }
 
 open class JXSegmentedTitleImageDataSource: JXSegmentedTitleDataSource {
-    open var titleImageType: JXSegmentedTitleImageType = .rightImage
+    open var titleImageTypes: [JXSegmentedTitleImageType]?
     /// 数量需要和item的数量保持一致。可以是ImageName或者图片网络地址
     open var normalImageInfos: [String]?
     /// 数量需要和item的数量保持一致。可以是ImageName或者图片网络地址。如果不赋值，选中时就不会处理图片切换。
@@ -45,7 +45,7 @@ open class JXSegmentedTitleImageDataSource: JXSegmentedTitleDataSource {
             return
         }
 
-        itemModel.titleImageType = titleImageType
+        itemModel.titleImageType = titleImageTypes?[index] ?? .rightImage
         itemModel.normalImageInfo = normalImageInfos?[index]
         itemModel.selectedImageInfo = selectedImageInfos?[index]
         itemModel.loadImageClosure = loadImageClosure
@@ -63,6 +63,7 @@ open class JXSegmentedTitleImageDataSource: JXSegmentedTitleDataSource {
 
     open override func preferredSegmentedView(_ segmentedView: JXSegmentedView, widthForItemAt index: Int) -> CGFloat {
         var width = super.preferredSegmentedView(segmentedView, widthForItemAt: index)
+        let titleImageType = titleImageTypes?[index] ?? .rightImage
         if itemWidth == JXSegmentedViewAutomaticDimension {
             switch titleImageType {
             case .leftImage, .rightImage:
@@ -80,6 +81,7 @@ open class JXSegmentedTitleImageDataSource: JXSegmentedTitleDataSource {
 
     public override func segmentedView(_ segmentedView: JXSegmentedView, widthForItemContentAt index: Int) -> CGFloat {
         var width = super.segmentedView(segmentedView, widthForItemContentAt: index)
+        let titleImageType = titleImageTypes?[index] ?? .rightImage
         switch titleImageType {
         case .leftImage, .rightImage:
             width += titleImageSpacing + imageSize.width
