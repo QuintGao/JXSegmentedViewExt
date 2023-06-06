@@ -1,8 +1,7 @@
 {
   "name": "JXSegmentedViewExt",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "summary": "JXSegmentedViewExt extensions and optimize",
-  "description": "对JXSegmentedView的优化扩展，拆分pod，支持更多样式的分类和指示器",
   "homepage": "https://github.com/QuintGao/JXSegmentedViewExt",
   "license": {
     "type": "MIT",
@@ -13,7 +12,7 @@
   },
   "source": {
     "git": "https://github.com/QuintGao/JXSegmentedViewExt.git",
-    "tag": "1.0.0"
+    "tag": "1.0.3"
   },
   "requires_arc": true,
   "platforms": {
@@ -24,7 +23,7 @@
   "subspecs": [
     {
       "name": "Core",
-      "source_files": "JXSegmentedView/Core/**/*.{swift}"
+      "source_files": "Sources/Core/**/*.{swift}"
     },
     {
       "name": "Title",

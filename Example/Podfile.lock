@@ -1,51 +1,51 @@
 PODS:
-  - JXSegmentedViewExt/Badge (1.0.0):
+  - JXSegmentedViewExt/Badge (1.0.3):
     - JXSegmentedViewExt/Title
-  - JXSegmentedViewExt/Core (1.0.0)
-  - JXSegmentedViewExt/DotZoom (1.0.0):
+  - JXSegmentedViewExt/Core (1.0.3)
+  - JXSegmentedViewExt/DotZoom (1.0.3):
     - JXSegmentedViewExt/Title
-  - JXSegmentedViewExt/Indicator (1.0.0):
-    - JXSegmentedViewExt/Indicator/AlignmentLine (= 1.0.0)
-    - JXSegmentedViewExt/Indicator/Background (= 1.0.0)
-    - JXSegmentedViewExt/Indicator/DotLine (= 1.0.0)
-    - JXSegmentedViewExt/Indicator/DoubleLine (= 1.0.0)
-    - JXSegmentedViewExt/Indicator/Gradient (= 1.0.0)
-    - JXSegmentedViewExt/Indicator/GradientLine (= 1.0.0)
-    - JXSegmentedViewExt/Indicator/Image (= 1.0.0)
-    - JXSegmentedViewExt/Indicator/Line (= 1.0.0)
-    - JXSegmentedViewExt/Indicator/RainbowLine (= 1.0.0)
-    - JXSegmentedViewExt/Indicator/Triangle (= 1.0.0)
-  - JXSegmentedViewExt/Indicator/AlignmentLine (1.0.0):
+  - JXSegmentedViewExt/Indicator (1.0.3):
+    - JXSegmentedViewExt/Indicator/AlignmentLine (= 1.0.3)
+    - JXSegmentedViewExt/Indicator/Background (= 1.0.3)
+    - JXSegmentedViewExt/Indicator/DotLine (= 1.0.3)
+    - JXSegmentedViewExt/Indicator/DoubleLine (= 1.0.3)
+    - JXSegmentedViewExt/Indicator/Gradient (= 1.0.3)
+    - JXSegmentedViewExt/Indicator/GradientLine (= 1.0.3)
+    - JXSegmentedViewExt/Indicator/Image (= 1.0.3)
+    - JXSegmentedViewExt/Indicator/Line (= 1.0.3)
+    - JXSegmentedViewExt/Indicator/RainbowLine (= 1.0.3)
+    - JXSegmentedViewExt/Indicator/Triangle (= 1.0.3)
+  - JXSegmentedViewExt/Indicator/AlignmentLine (1.0.3):
     - JXSegmentedViewExt/Indicator/Line
-  - JXSegmentedViewExt/Indicator/Background (1.0.0):
+  - JXSegmentedViewExt/Indicator/Background (1.0.3):
     - JXSegmentedViewExt/Core
-  - JXSegmentedViewExt/Indicator/DotLine (1.0.0):
+  - JXSegmentedViewExt/Indicator/DotLine (1.0.3):
     - JXSegmentedViewExt/Core
-  - JXSegmentedViewExt/Indicator/DoubleLine (1.0.0):
+  - JXSegmentedViewExt/Indicator/DoubleLine (1.0.3):
     - JXSegmentedViewExt/Core
-  - JXSegmentedViewExt/Indicator/Gradient (1.0.0):
+  - JXSegmentedViewExt/Indicator/Gradient (1.0.3):
     - JXSegmentedViewExt/Core
-  - JXSegmentedViewExt/Indicator/GradientLine (1.0.0):
+  - JXSegmentedViewExt/Indicator/GradientLine (1.0.3):
     - JXSegmentedViewExt/Indicator/Line
-  - JXSegmentedViewExt/Indicator/Image (1.0.0):
+  - JXSegmentedViewExt/Indicator/Image (1.0.3):
     - JXSegmentedViewExt/Core
-  - JXSegmentedViewExt/Indicator/Line (1.0.0):
+  - JXSegmentedViewExt/Indicator/Line (1.0.3):
     - JXSegmentedViewExt/Core
-  - JXSegmentedViewExt/Indicator/RainbowLine (1.0.0):
+  - JXSegmentedViewExt/Indicator/RainbowLine (1.0.3):
     - JXSegmentedViewExt/Indicator/Line
-  - JXSegmentedViewExt/Indicator/Triangle (1.0.0):
+  - JXSegmentedViewExt/Indicator/Triangle (1.0.3):
     - JXSegmentedViewExt/Core
-  - JXSegmentedViewExt/Number (1.0.0):
+  - JXSegmentedViewExt/Number (1.0.3):
     - JXSegmentedViewExt/Title
-  - JXSegmentedViewExt/SubTitle (1.0.0):
+  - JXSegmentedViewExt/SubTitle (1.0.3):
     - JXSegmentedViewExt/Title
-  - JXSegmentedViewExt/SubTitleImage (1.0.0):
+  - JXSegmentedViewExt/SubTitleImage (1.0.3):
     - JXSegmentedViewExt/SubTitle
-  - JXSegmentedViewExt/Title (1.0.0):
+  - JXSegmentedViewExt/Title (1.0.3):
     - JXSegmentedViewExt/Core
-  - JXSegmentedViewExt/TitleImage (1.0.0):
+  - JXSegmentedViewExt/TitleImage (1.0.3):
     - JXSegmentedViewExt/Title
-  - JXSegmentedViewExt/TitleOrImage (1.0.0):
+  - JXSegmentedViewExt/TitleOrImage (1.0.3):
     - JXSegmentedViewExt/Title
 
 DEPENDENCIES:
@@ -62,8 +62,8 @@ EXTERNAL SOURCES:
     :path: "../../JXSegmentedViewExt"
 
 SPEC CHECKSUMS:
-  JXSegmentedViewExt: d9c1fae6941adafb1d9b1005ccf34dc4b033e321
+  JXSegmentedViewExt: 9624bd088ee096816e92bda9fbf1ae128d5c8a5b
 
 PODFILE CHECKSUM: 95dd59559df669eed2f97ff6b79e05b91afe8828
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.1
