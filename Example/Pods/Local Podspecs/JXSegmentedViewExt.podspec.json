@@ -27,7 +27,7 @@
     },
     {
       "name": "Title",
-      "source_files": "JXSegmentedView/Title",
+      "source_files": "Sources/Title",
       "dependencies": {
         "JXSegmentedViewExt/Core": [
 
@@ -36,7 +36,7 @@
     },
     {
       "name": "SubTitle",
-      "source_files": "JXSegmentedView/SubTitle",
+      "source_files": "Sources/SubTitle",
       "dependencies": {
         "JXSegmentedViewExt/Title": [
 
@@ -45,7 +45,7 @@
     },
     {
       "name": "SubTitleImage",
-      "source_files": "JXSegmentedView/SubTitleImage",
+      "source_files": "Sources/SubTitleImage",
       "dependencies": {
         "JXSegmentedViewExt/SubTitle": [
 
@@ -54,7 +54,7 @@
     },
     {
       "name": "TitleImage",
-      "source_files": "JXSegmentedView/TitleImage",
+      "source_files": "Sources/TitleImage",
       "dependencies": {
         "JXSegmentedViewExt/Title": [
 
@@ -63,7 +63,7 @@
     },
     {
       "name": "TitleOrImage",
-      "source_files": "JXSegmentedView/TitleOrImage",
+      "source_files": "Sources/TitleOrImage",
       "dependencies": {
         "JXSegmentedViewExt/Title": [
 
@@ -72,7 +72,7 @@
     },
     {
       "name": "TitleGradient",
-      "source_files": "JXSegmentedView/TitleGradient",
+      "source_files": "Sources/TitleGradient",
       "dependencies": {
         "JXSegmentedViewExt/Title": [
 
@@ -81,7 +81,7 @@
     },
     {
       "name": "AttributeTitle",
-      "source_files": "JXSegmentedView/AttributeTitle",
+      "source_files": "Sources/AttributeTitle",
       "dependencies": {
         "JXSegmentedViewExt/Core": [
 
@@ -90,7 +90,7 @@
     },
     {
       "name": "Dot",
-      "source_files": "JXSegmentedView/Dot",
+      "source_files": "Sources/Dot",
       "dependencies": {
         "JXSegmentedViewExt/Title": [
 
@@ -99,7 +99,7 @@
     },
     {
       "name": "DotZoom",
-      "source_files": "JXSegmentedView/DotZoom",
+      "source_files": "Sources/DotZoom",
       "dependencies": {
         "JXSegmentedViewExt/Title": [
 
@@ -108,7 +108,7 @@
     },
     {
       "name": "Number",
-      "source_files": "JXSegmentedView/Number",
+      "source_files": "Sources/Number",
       "dependencies": {
         "JXSegmentedViewExt/Title": [
 
@@ -117,7 +117,7 @@
     },
     {
       "name": "Badge",
-      "source_files": "JXSegmentedView/Badge",
+      "source_files": "Sources/Badge",
       "dependencies": {
         "JXSegmentedViewExt/Title": [
 
@@ -129,7 +129,7 @@
       "subspecs": [
         {
           "name": "Background",
-          "source_files": "JXSegmentedView/Indicator/Background",
+          "source_files": "Sources/Indicator/Background",
           "dependencies": {
             "JXSegmentedViewExt/Core": [
 
@@ -138,7 +138,7 @@
         },
         {
           "name": "Line",
-          "source_files": "JXSegmentedView/Indicator/Line",
+          "source_files": "Sources/Indicator/Line",
           "dependencies": {
             "JXSegmentedViewExt/Core": [
 
@@ -147,7 +147,7 @@
         },
         {
           "name": "AlignmentLine",
-          "source_files": "JXSegmentedView/Indicator/AlignmentLine",
+          "source_files": "Sources/Indicator/AlignmentLine",
           "dependencies": {
             "JXSegmentedViewExt/Indicator/Line": [
 
@@ -156,7 +156,7 @@
         },
         {
           "name": "Gradient",
-          "source_files": "JXSegmentedView/Indicator/Gradient",
+          "source_files": "Sources/Indicator/Gradient",
           "dependencies": {
             "JXSegmentedViewExt/Core": [
 
@@ -165,7 +165,7 @@
         },
         {
           "name": "GradientLine",
-          "source_files": "JXSegmentedView/Indicator/GradientLine",
+          "source_files": "Sources/Indicator/GradientLine",
           "dependencies": {
             "JXSegmentedViewExt/Indicator/Line": [
 
@@ -174,7 +174,7 @@
         },
         {
           "name": "DotLine",
-          "source_files": "JXSegmentedView/Indicator/DotLine",
+          "source_files": "Sources/Indicator/DotLine",
           "dependencies": {
             "JXSegmentedViewExt/Core": [
 
@@ -183,7 +183,7 @@
         },
         {
           "name": "DoubleLine",
-          "source_files": "JXSegmentedView/Indicator/DoubleLine",
+          "source_files": "Sources/Indicator/DoubleLine",
           "dependencies": {
             "JXSegmentedViewExt/Core": [
 
@@ -192,7 +192,7 @@
         },
         {
           "name": "RainbowLine",
-          "source_files": "JXSegmentedView/Indicator/RainbowLine",
+          "source_files": "Sources/Indicator/RainbowLine",
           "dependencies": {
             "JXSegmentedViewExt/Indicator/Line": [
 
@@ -201,7 +201,7 @@
         },
         {
           "name": "Triangle",
-          "source_files": "JXSegmentedView/Indicator/Triangle",
+          "source_files": "Sources/Indicator/Triangle",
           "dependencies": {
             "JXSegmentedViewExt/Core": [
 
@@ -210,7 +210,7 @@
         },
         {
           "name": "Image",
-          "source_files": "JXSegmentedView/Indicator/Image",
+          "source_files": "Sources/Indicator/Image",
           "dependencies": {
             "JXSegmentedViewExt/Core": [
 
