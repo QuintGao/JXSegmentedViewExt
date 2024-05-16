@@ -7,25 +7,74 @@
 
 import UIKit
 
+open class JXSegmentedBadgeView: UIView {
+    public private(set) var badgeLabeL: UILabel?
+    public private(set) var badgeImageView: UIImageView?
+    
+    public var itemModel: JXSegmentedBadgeItemModel? {
+        didSet {
+            guard let itemModel = itemModel else { return }
+            if itemModel.badgeType == .image {
+                if badgeImageView == nil {
+                    badgeImageView = UIImageView(frame: bounds)
+                    addSubview(badgeImageView!)
+                }
+            }else {
+                if badgeLabeL == nil {
+                    badgeLabeL = UILabel(frame: bounds)
+                    badgeLabeL?.textAlignment = .center
+                    addSubview(badgeLabeL!)
+                }
+                badgeLabeL?.backgroundColor = itemModel.badgeBackgroundColor
+                badgeLabeL?.font = itemModel.badgeLabelFont
+                badgeLabeL?.textColor = itemModel.badgeTitleColor
+                badgeLabeL?.text = itemModel.badgeString
+                
+                if itemModel.badgeType == .dot {
+                    badgeLabeL?.text = nil
+                }
+            }
+            itemModel.updateBadgeClosure?(itemModel.index, self, itemModel.badgeInfo)
+        }
+    }
+    
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        badgeLabeL?.frame = bounds
+        badgeImageView?.frame = bounds
+    }
+    
+    public func clear() {
+        badgeLabeL?.text = nil
+        badgeImageView?.image = nil
+    }
+}
+
 open class JXSegmentedBadgeCell: JXSegmentedTitleCell {
     var badgeCenterX = NSLayoutConstraint()
     var badgeCenterY = NSLayoutConstraint()
     var badgeWidth = NSLayoutConstraint()
     var badgeHeight = NSLayoutConstraint()
     
-    public let badgeLabel = UILabel()
+    public let badgeView = JXSegmentedBadgeView()
+    
+    open override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        badgeView.clear()
+    }
 
     open override func commonInit() {
         super.commonInit()
     
-        badgeLabel.textAlignment = .center
-        badgeLabel.layer.masksToBounds = true
-        badgeLabel.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(badgeLabel)
-        badgeCenterX = badgeLabel.centerXAnchor.constraint(equalTo: titleLabel.trailingAnchor)
-        badgeCenterY = badgeLabel.centerYAnchor.constraint(equalTo: titleLabel.topAnchor)
-        badgeWidth = badgeLabel.widthAnchor.constraint(equalToConstant: 0)
-        badgeHeight = badgeLabel.heightAnchor.constraint(equalToConstant: 0)
+        badgeView.layer.masksToBounds = true
+        badgeView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(badgeView)
+        badgeCenterX = badgeView.centerXAnchor.constraint(equalTo: titleLabel.trailingAnchor)
+        badgeCenterY = badgeView.centerYAnchor.constraint(equalTo: titleLabel.topAnchor)
+        badgeWidth = badgeView.widthAnchor.constraint(equalToConstant: 0)
+        badgeHeight = badgeView.heightAnchor.constraint(equalToConstant: 0)
         NSLayoutConstraint.activate([badgeCenterX, badgeCenterY, badgeWidth, badgeHeight])
     }
 
@@ -35,45 +84,43 @@ open class JXSegmentedBadgeCell: JXSegmentedTitleCell {
         guard let myItemModel = itemModel as? JXSegmentedBadgeItemModel else {
             return
         }
+        
+        badgeView.itemModel = myItemModel
 
-        badgeLabel.backgroundColor = myItemModel.badgeBackgroundColor
-        badgeLabel.textColor = myItemModel.badgeTitleColor
-        badgeLabel.font = myItemModel.badgeLabelFont
-        badgeLabel.text = myItemModel.badgeString
-        if myItemModel.updateBadgeStyle != nil {
-            myItemModel.updateBadgeStyle!(myItemModel.index, badgeLabel)
-        }
-
-        if myItemModel.badgeType == .dot {
-            badgeLabel.isHidden = !(myItemModel.badge as! Bool)
-            badgeLabel.text = nil
-            badgeLabel.layer.cornerRadius = myItemModel.dotBadgeCornerRadius
+        if myItemModel.badgeType == .image {
+            badgeWidth.constant = myItemModel.badgeSize.width
+            badgeHeight.constant = myItemModel.badgeSize.height
+            badgeCenterX.constant = myItemModel.badgeOffset.x
+            badgeCenterY.constant = myItemModel.badgeOffset.y
+        }else if myItemModel.badgeType == .dot {
+            badgeView.isHidden = !(myItemModel.badgeInfo as? Bool ?? false)
+            badgeView.layer.cornerRadius = myItemModel.dotBadgeCornerRadius
             badgeWidth.constant = myItemModel.dotBadgeSize.width
             badgeHeight.constant = myItemModel.dotBadgeSize.height
             badgeCenterX.constant = myItemModel.dotBadgeOffset.x
             badgeCenterY.constant = myItemModel.dotBadgeOffset.y
         }else {
-            badgeLabel.layer.cornerRadius = myItemModel.badgeLabelHeight/2
-            badgeHeight.constant = myItemModel.badgeLabelHeight
-            badgeCenterX.constant = myItemModel.badgeLabelOffset.x
-            badgeCenterY.constant = myItemModel.badgeLabelOffset.y
+            badgeView.layer.cornerRadius = myItemModel.badgeHeight/2
+            badgeHeight.constant = myItemModel.badgeHeight
+            badgeCenterX.constant = myItemModel.badgeOffset.x
+            badgeCenterY.constant = myItemModel.badgeOffset.y
             if myItemModel.badgeType == .number {
-                let badge = myItemModel.badge as! Int
-                self.badgeLabel.isHidden = badge == 0
+                let badge = myItemModel.badgeInfo as? Int ?? 0
+                self.badgeView.isHidden = badge == 0
                 if badge < 10 && myItemModel.shouldMakeRoundWhenSingleNumber {
-                    badgeWidth.constant = myItemModel.badgeLabelHeight
+                    badgeWidth.constant = myItemModel.badgeHeight
                 }else {
-                    let width = myItemModel.badgeString.boundingRect(with: CGSize(width: CGFloat.greatestFiniteMagnitude, height: myItemModel.badgeLabelHeight), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: myItemModel.badgeLabelFont], context: nil).size.width
-                    badgeWidth.constant = width + myItemModel.badgeLabelWidthIncrement
+                    let width = myItemModel.badgeString.boundingRect(with: CGSize(width: CGFloat.infinity, height: myItemModel.badgeHeight), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: myItemModel.badgeLabelFont], context: nil).size.width
+                    badgeWidth.constant = width + myItemModel.badgeWidthIncrement
                 }
             }else {
-                if myItemModel.badge is String {
-                    badgeLabel.isHidden = (myItemModel.badge as! String).count <= 0
+                if myItemModel.badgeInfo is String {
+                    badgeView.isHidden = (myItemModel.badgeInfo as? String ?? "").count <= 0
                 }else {
-                    badgeLabel.isHidden = (myItemModel.badge as! Int) == 0
+                    badgeView.isHidden = (myItemModel.badgeInfo as? Int ?? 0) == 0
                 }
-                let width = myItemModel.badgeString.boundingRect(with: CGSize(width: CGFloat.greatestFiniteMagnitude, height: myItemModel.badgeLabelHeight), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: myItemModel.badgeLabelFont], context: nil).size.width
-                badgeWidth.constant = width + myItemModel.badgeLabelWidthIncrement
+                let width = myItemModel.badgeString.boundingRect(with: CGSize(width: CGFloat.infinity, height: myItemModel.badgeHeight), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: myItemModel.badgeLabelFont], context: nil).size.width
+                badgeWidth.constant = width + myItemModel.badgeWidthIncrement
             }
         }
     }

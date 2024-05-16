@@ -23,7 +23,12 @@
   "subspecs": [
     {
       "name": "Core",
-      "source_files": "Sources/Core/**/*.{swift}"
+      "source_files": "Sources/Core/**/*.{swift}",
+      "resource_bundles": {
+        "JXSegmentedViewExt": [
+          "Sources/Core/PrivacyInfo.xcprivacy"
+        ]
+      }
     },
     {
       "name": "Title",

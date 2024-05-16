@@ -3,6 +3,9 @@ use_frameworks!
 platform :ios, '9.0'
 
 target 'Example' do
+  
+  pod 'Kingfisher'
+  
   pod 'JXSegmentedViewExt', :subspecs => ['SubTitleImage', 'TitleImage',  'TitleOrImage', 'DotZoom', 'Badge', 'Number', 'Indicator'], :path => '../../JXSegmentedViewExt'
   
   

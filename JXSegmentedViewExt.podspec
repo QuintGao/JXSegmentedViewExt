@@ -14,6 +14,7 @@ Pod::Spec.new do |s|
   # -----------基础组件--------------------------#
   s.subspec 'Core' do |ss|
     ss.source_files = 'Sources/Core/**/*.{swift}'
+    ss.resource_bundles = {"JXSegmentedViewExt" => ["Sources/Core/PrivacyInfo.xcprivacy"]}
   end
   
   # -----------分类-----------------------------#

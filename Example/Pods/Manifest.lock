@@ -47,6 +47,7 @@ PODS:
     - JXSegmentedViewExt/Title
   - JXSegmentedViewExt/TitleOrImage (1.0.3):
     - JXSegmentedViewExt/Title
+  - Kingfisher (4.10.1)
 
 DEPENDENCIES:
   - JXSegmentedViewExt/Badge (from `../../JXSegmentedViewExt`)
@@ -56,14 +57,20 @@ DEPENDENCIES:
   - JXSegmentedViewExt/SubTitleImage (from `../../JXSegmentedViewExt`)
   - JXSegmentedViewExt/TitleImage (from `../../JXSegmentedViewExt`)
   - JXSegmentedViewExt/TitleOrImage (from `../../JXSegmentedViewExt`)
+  - Kingfisher
+
+SPEC REPOS:
+  trunk:
+    - Kingfisher
 
 EXTERNAL SOURCES:
   JXSegmentedViewExt:
     :path: "../../JXSegmentedViewExt"
 
 SPEC CHECKSUMS:
-  JXSegmentedViewExt: 094927667217a579187258b303e90c7d751c8361
+  JXSegmentedViewExt: 924b8c23965696770b3009eb4e7c8f74d1a005d8
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
 
-PODFILE CHECKSUM: 95dd59559df669eed2f97ff6b79e05b91afe8828
+PODFILE CHECKSUM: b52b26901c2e471fe67c56ef65cab988fbd2f2a2
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.15.2

@@ -7,7 +7,7 @@
 
 import UIKit
 
-public typealias UpdateBadgeStyle = ((Int, UILabel) -> Void)
+public typealias UpdateBadgeClosure = ((Int, JXSegmentedBadgeView, Any) -> Void)
 
 open class JXSegmentedBadgeDataSource: JXSegmentedTitleDataSource {
     // badge类型数组，默认[JXSegmentedBadgeType.number]
@@ -16,13 +16,13 @@ open class JXSegmentedBadgeDataSource: JXSegmentedTitleDataSource {
     // 需要与titles的count对应，需根据对应的类型传入
     // number类型传入Int，text类型传入String，dot传入Bool
     // 对于JXSegmentedBadgeType.dot，true代表显示，false代表隐藏
-    open var badges = [Any]()
+    open var badgeInfos = [Any]()
     
     // 内部默认不会格式化数字，直接转成字符串显示。比如业务需要数字超过99显示99+，可以通过该闭包实现
     open var badgeStringFormatterClosure: ((JXSegmentedBadgeType, Any) -> String)?
     
     // 自定义单个badgeLabel的样式
-    open var updateBadgeStyleClosure: UpdateBadgeStyle?
+    open var updateBadgeClosure: UpdateBadgeClosure?
     
     // badgeLabe的font，默认11
     open var badgeLabelFont = UIFont.systemFont(ofSize: 11)
@@ -33,14 +33,17 @@ open class JXSegmentedBadgeDataSource: JXSegmentedTitleDataSource {
     // 数字的title颜色
     open var badgeTitleColor = UIColor.white
     
-    // badgeLabel的宽度补偿，label真实的宽度是文字内容的宽度+补偿的宽度，默认：10
-    open var badgeLabelWidthIncrement: CGFloat = 10
+    // badge的宽度补偿，label真实的宽度是文字内容的宽度+补偿的宽度，默认：10
+    open var badgeWidthIncrement: CGFloat = 10
     
-    // badgeLabel的高度，默认14
+    // badge的高度，默认14
     open var badgeLabelHeight: CGFloat = 14
     
-    // badgeLabel x，y方向的偏移
-    open var badgeLabelOffset = CGPoint.zero
+    // badge x，y方向的偏移
+    open var badgeOffset = CGPoint.zero
+    
+    // badge 为image时有效
+    open var badgeSize = CGSize.zero
     
     // 当是单一数字时，是否让numberLabel变成圆。即numberLabel的宽度等于高度，cornerRadius等于高度/2。当为true，单一数字时会忽略numberLabelWidthIncrement属性。默认为NO；
     open var shouldMakeRoundWhenSingleNumber: Bool = false
@@ -67,19 +70,20 @@ open class JXSegmentedBadgeDataSource: JXSegmentedTitleDataSource {
         }
 
         itemModel.badgeType = badgeTypes[index]
-        itemModel.badge = badges[index]
+        itemModel.badgeInfo = badgeInfos[index]
         if badgeStringFormatterClosure != nil {
-            itemModel.badgeString = badgeStringFormatterClosure!(itemModel.badgeType, itemModel.badge)
+            itemModel.badgeString = badgeStringFormatterClosure!(itemModel.badgeType, itemModel.badgeInfo)
         }else {
-            itemModel.badgeString = "\(String(describing: itemModel.badge))"
+            itemModel.badgeString = "\(String(describing: itemModel.badgeInfo))"
         }
-        itemModel.updateBadgeStyle = updateBadgeStyleClosure
+        itemModel.updateBadgeClosure = updateBadgeClosure
         itemModel.badgeBackgroundColor = badgeBackgroundColor
         itemModel.badgeTitleColor = badgeTitleColor
         itemModel.badgeLabelFont = badgeLabelFont
-        itemModel.badgeLabelHeight = badgeLabelHeight
-        itemModel.badgeLabelOffset = badgeLabelOffset
-        itemModel.badgeLabelWidthIncrement = badgeLabelWidthIncrement
+        itemModel.badgeHeight = badgeLabelHeight
+        itemModel.badgeOffset = badgeOffset
+        itemModel.badgeSize = badgeSize
+        itemModel.badgeWidthIncrement = badgeWidthIncrement
         itemModel.shouldMakeRoundWhenSingleNumber = shouldMakeRoundWhenSingleNumber
         itemModel.dotBadgeSize = dotBadgeSize
         itemModel.dotBadgeOffset = dotBadgeOffset

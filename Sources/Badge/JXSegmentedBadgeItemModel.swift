@@ -11,19 +11,21 @@ public enum JXSegmentedBadgeType {
     case number // 数字
     case text   // 文字
     case dot    // 圆点
+    case image  // 图片
 }
 
 open class JXSegmentedBadgeItemModel: JXSegmentedTitleItemModel {
     open var badgeType = JXSegmentedBadgeType.number
-    open var badge: Any = 0
-    open var updateBadgeStyle: UpdateBadgeStyle?
+    open var badgeInfo: Any = 0
+    open var updateBadgeClosure: UpdateBadgeClosure?
     open var badgeString: String = ""
     open var badgeBackgroundColor: UIColor = .red
     open var badgeTitleColor: UIColor = .white
-    open var badgeLabelWidthIncrement: CGFloat = 0
-    open var badgeLabelHeight: CGFloat = 0
+    open var badgeWidthIncrement: CGFloat = 0
+    open var badgeHeight: CGFloat = 0
     open var badgeLabelFont: UIFont = .systemFont(ofSize: 12)
-    open var badgeLabelOffset: CGPoint = .zero
+    open var badgeOffset: CGPoint = .zero
+    open var badgeSize: CGSize = .zero
     open var shouldMakeRoundWhenSingleNumber: Bool = false
     
     // 以下只对JXSegmentedBadgeStyle为dot有效
