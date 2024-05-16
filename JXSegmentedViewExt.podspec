@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'JXSegmentedViewExt'
-  s.version          = '1.0.3'
+  s.version          = '1.0.4'
   s.summary          = 'JXSegmentedViewExt extensions and optimize'
   s.homepage         = 'https://github.com/QuintGao/JXSegmentedViewExt'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
